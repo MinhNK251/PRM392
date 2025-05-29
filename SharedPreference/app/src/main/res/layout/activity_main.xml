@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Enter A:"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:labelFor="@id/editA"
+        app:layout_constraintTop_toTopOf="@id/main"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textA"/>
+
+    <TextView
+        android:id="@+id/textB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter B:"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:labelFor="@id/editB"
+        app:layout_constraintTop_toBottomOf="@+id/editA"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textB"/>
+
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result:"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:labelFor="@id/editResult"
+        app:layout_constraintTop_toBottomOf="@+id/editB"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textResult"/>
+
+    <Button
+        android:id="@+id/btnSum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sum"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/btnClear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editResult"/>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/btnSum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editResult" />
+
+    <TextView
+        android:id="@+id/textHistoryResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="History:"
+        android:textColor="#FF0000"
+        android:background="#FFEB3B"
+        android:textSize="20sp"
+        android:padding="3dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnSum"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="3dp"
+        android:textColor="#00BCD4"
+        app:layout_constraintTop_toBottomOf="@+id/textHistoryResult"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
