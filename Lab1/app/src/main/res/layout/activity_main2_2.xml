@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B5998"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!-- Facebook Logo -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="90dp"
+        android:contentDescription="Facebook Logo"
+        android:src="@drawable/facebook_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Language Selector -->
+    <TextView
+        android:id="@+id/language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="English • Change"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <!-- Email or Phone Field -->
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#A2A2A2"
+        android:hint="Email or Phone"
+        android:inputType="textEmailAddress"
+        android:textColor="#A2A2A2"
+        android:textColorHint="#A2A2A2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/language" />
+
+    <!-- Password Field -->
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#A2A2A2"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#A2A2A2"
+        android:textColorHint="#A2A2A2"
+        app:layout_constraintEnd_toEndOf="@id/emailField"
+        app:layout_constraintStart_toStartOf="@id/emailField"
+        app:layout_constraintTop_toBottomOf="@id/emailField" />
+
+    <!-- Log In Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="LOG IN"
+        android:textColor="#A2A2A2"
+        android:textStyle="bold"
+        app:backgroundTint="#6A78A7"
+        app:cornerRadius="1dp"
+        app:layout_constraintEnd_toEndOf="@id/passwordField"
+        app:layout_constraintStart_toStartOf="@id/passwordField"
+        app:layout_constraintTop_toBottomOf="@id/passwordField" />
+
+    <!-- Sign Up Link -->
+    <TextView
+        android:id="@+id/signUpLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Sign Up for Facebook"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/loginButton"
+        app:layout_constraintStart_toStartOf="@id/loginButton"
+        app:layout_constraintBottom_toTopOf="@id/forgotPassword" />
+
+    <!-- Forgot Password Link -->
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Forgot Password?"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/signUpLink"
+        app:layout_constraintStart_toStartOf="@id/signUpLink"
+        app:layout_constraintBottom_toBottomOf="@id/main"/>
+
+    <!-- Help Icon (Optional) -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/helpIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:src="@android:drawable/ic_menu_help"
+        android:background="#FFFFFF"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#3B5998" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
