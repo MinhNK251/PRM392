@@ -8,17 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lab9.MainActivity;
 import com.example.lab9.model.CongViec;
 import com.example.lab9.R;
 
 import java.util.List;
 
 public class CongViecAdapter extends BaseAdapter {
-    private Context context;
+    private MainActivity context;
     private int layout;
     private List<CongViec> congViecList;
 
-    public CongViecAdapter(Context context, int layout, List<CongViec> congViecList) {
+    public CongViecAdapter(MainActivity context, int layout, List<CongViec> congViecList) {
         this.context = context;
         this.layout = layout;
         this.congViecList = congViecList;
@@ -60,6 +61,13 @@ public class CongViecAdapter extends BaseAdapter {
         }
         CongViec congViec = congViecList.get(i);
         holder.tv_Name.setText(congViec.getTenCV());
+
+        holder.iv_Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.DialogUpdate(congViec.getTenCV(), congViec.getIdCv());
+            }
+        });
         return view;
     }
 }

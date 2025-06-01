@@ -92,14 +92,40 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
+        dialog.show();
+    }
 
+    public void DialogUpdate(String tenCV, int id){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_update_project);
+
+        EditText et_Name = (EditText) dialog.findViewById(R.id.et_Name);
+        Button btn_Update = (Button) dialog.findViewById(R.id.btn_Update);
+        Button btn_Cancel = (Button) dialog.findViewById(R.id.btn_Cancel);
+        et_Name.setText(tenCV);
+
+        btn_Update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newName = et_Name.getText().toString().trim();
+                database.QueryData("Update CongViec set TenCV = '" + newName + "' where id = '" + id + "'");
+                Toast.makeText(MainActivity.this, "Đã cập nhật", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+                GetDataCongViec();
+            }
+        });
+        btn_Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         dialog.show();
     }
 
