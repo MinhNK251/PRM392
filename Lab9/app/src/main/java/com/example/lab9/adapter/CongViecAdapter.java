@@ -68,6 +68,13 @@ public class CongViecAdapter extends BaseAdapter {
                 context.DialogUpdate(congViec.getTenCV(), congViec.getIdCv());
             }
         });
+
+        holder.iv_Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.DialogDelete(congViec.getTenCV(), congViec.getIdCv());
+            }
+        });
         return view;
     }
 }

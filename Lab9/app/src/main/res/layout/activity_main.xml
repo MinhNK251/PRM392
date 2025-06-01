@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:background="?attr/colorPrimary"
-        app:title="Lab 9"
+        app:title="Lab 9: SQLite"
         app:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"/>
 
