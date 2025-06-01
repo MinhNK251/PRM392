@@ -9,21 +9,20 @@
 
     <TextView
         android:id="@+id/tv_Name"
-        android:layout_width="260dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Project Name"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="26dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_Edit"
         android:layout_width="35dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/edit"
         app:layout_constraintStart_toEndOf="@id/tv_Name"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +30,8 @@
     <ImageView
         android:id="@+id/iv_Delete"
         android:layout_width="35dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/delete"
         app:layout_constraintHorizontal_weight="0.5"

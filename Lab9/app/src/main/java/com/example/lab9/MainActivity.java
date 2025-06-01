@@ -1,12 +1,21 @@
 package com.example.lab9;
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
     ListView lv_Project;
     ArrayList<CongViec> arrayCongViec;
     CongViecAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         lv_Project = (ListView) findViewById(R.id.lv_Project);
         arrayCongViec = new ArrayList<>();
         adapter = new CongViecAdapter(this, R.layout.row_project, arrayCongViec);
@@ -34,21 +46,71 @@ public class MainActivity extends AppCompatActivity {
 
         database = new Database(this, "Lab9.sqLite", null, 1);
         database.QueryData("Create table if not exists CongViec(id Integer Primary Key AutoIncrement, TenCV nvarchar(200))");
-        database.QueryData("Insert into CongViec values(null, 'Project Android')");
-        database.QueryData("Insert into CongViec values(null, 'Design App')");
+//        database.QueryData("Insert into CongViec values(null, 'Project Android')");
+//        database.QueryData("Insert into CongViec values(null, 'Design App')");
+        GetDataCongViec();
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.add_project, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.menuAdd)
+            DialogAdd();
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void DialogAdd(){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_add_project);
+
+        EditText et_Name = (EditText) dialog.findViewById(R.id.et_Name);
+        Button btn_Add = (Button) dialog.findViewById(R.id.btn_Add);
+        Button btn_Cancel = (Button) dialog.findViewById(R.id.btn_Cancel);
+
+        btn_Add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nameProject = et_Name.getText().toString();
+                if(nameProject.equals(""))
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập tên công việc", Toast.LENGTH_SHORT).show();
+                else {
+                    database.QueryData("Insert into CongViec values(null, '" + nameProject + "')");
+                    Toast.makeText(MainActivity.this, "Đã thêm", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    GetDataCongViec();
+                }
+            }
+        });
+
+        btn_Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void GetDataCongViec(){
         Cursor dataCongViec = database.GetData("Select * from CongViec");
+        arrayCongViec.clear();
         while (dataCongViec.moveToNext()){
             String tenCV = dataCongViec.getString(1);
             int id = dataCongViec.getInt(0);
             arrayCongViec.add(new CongViec(id, tenCV));
         }
         adapter.notifyDataSetChanged();
-        
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 }
