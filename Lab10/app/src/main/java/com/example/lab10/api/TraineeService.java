@@ -18,8 +18,8 @@ public interface TraineeService {
     Call<Trainee> createTrainees(@Body Trainee trainee);
 
     @PUT(TRAINEES + "/{id}")
-    Call<Trainee> updateTrainees(@Path("id") Object id, @Body Trainee trainee);
+    Call<Trainee> updateTrainees(@Path("id") long id, @Body Trainee trainee);
 
     @DELETE(TRAINEES + "/{id}")
-    Call<Trainee> deleteTrainees(@Path("id") Object id);
+    Call<Trainee> deleteTrainees(@Path("id") long id);
 }
