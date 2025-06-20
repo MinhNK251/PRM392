@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 delete(id);
-                Toast.makeText(MainActivity.this, "Deleted " + name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Deleted " + name, Toast.LENGTH_SHORT).show();
                 GetDataTrainee();
             }
         });

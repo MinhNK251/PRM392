@@ -1,9 +1,12 @@
 package com.example.lab7;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
                 ClickRequestPermission();
             }
         });
+
+        btnOpenSettingsPermission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenAppSettings();
+            }
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -46,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
             String permissions = (Manifest.permission.ACCESS_FINE_LOCATION);
             requestPermissions(new String[]{permissions}, REQUEST_PERMISSION_CODE);
         }
+    }
+
+    private void OpenAppSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+        startActivity(intent);
     }
 
     @Override
