@@ -48,8 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
         database = new Database(this, "Lab9.sqLite", null, 1);
         database.QueryData("Create table if not exists CongViec(id Integer Primary Key AutoIncrement, TenCV nvarchar(200))");
-//        database.QueryData("Insert into CongViec values(null, 'Project Android')");
-//        database.QueryData("Insert into CongViec values(null, 'Design App')");
+        // Check if records already exist before inserting
+        Cursor cursor = database.GetData("SELECT * FROM CongViec");
+        if (cursor.getCount() == 0) {
+            // Insert records only if the table is empty
+            database.QueryData("Insert into CongViec values(null, 'Project Android')");
+            database.QueryData("Insert into CongViec values(null, 'Design App')");
+        }
+        cursor.close();
         GetDataCongViec();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
