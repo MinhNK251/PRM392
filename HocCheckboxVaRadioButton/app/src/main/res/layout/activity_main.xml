@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.communityuni.hoccheckboxvaradiobutton.MainActivity">
+
+    <TextView
+        android:text="Những sở thích của bạn:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="20sp"
+        android:textColor="?attr/colorAccent" />
+
+    <CheckBox
+        android:text="Android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkAndroid" />
+
+    <CheckBox
+        android:text="Swift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkSwift" />
+
+    <CheckBox
+        android:text="C#"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkCSharp" />
+
+    <Button
+        android:onClick="xuLyXacNhanSoThich"
+        android:text="Xác nhận"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnXacNhan" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSothich"
+        android:background="@color/mausothich"
+        android:textColor="@color/mauchusothich"
+        android:hint="các sở thích ở đây" />
+
+    <TextView
+        android:text="Bạn bình chọn cho ai:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/group">
+
+        <RadioButton
+            android:text="Obama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radObama"
+             />
+
+        <RadioButton
+            android:text="Putin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radPutin"
+            />
+
+        <RadioButton
+            android:text="Kim Jong Un"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radKim"
+            />
+
+    </RadioGroup>
+
+    <Button
+        android:onClick="xuLyBinhChon"
+        android:text="Bình chọn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnBinhChon" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBinhChon"
+        android:textColor="@color/maubinhchon"
+        android:textSize="30sp" />
+</LinearLayout>
